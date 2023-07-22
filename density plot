@@ -1,0 +1,11 @@
+# density plot
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import gaussian_kde
+data = np.random.normal(10,3,100) 
+density = gaussian_kde(data)
+x_vals = np.linspace(0,20,200)
+density.covariance_factor = lambda : .5 
+density._compute_covariance()
+plt.plot(x_vals,density(x_vals))
+plt.show()
